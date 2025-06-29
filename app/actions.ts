@@ -11,3 +11,15 @@ export async function getTeam(teamNumber: number) {
 	);
 	return response.json();
 }
+
+export async function getTeamYear(teamNumber: number, year: number) {
+	const response = await fetch(
+		`https://api.statbotics.io/v3/team_year/${teamNumber}/${year}`,
+		{
+			headers: {
+				accept: "application/json",
+			},
+		},
+	);
+	return response.json();
+}

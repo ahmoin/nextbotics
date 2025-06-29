@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
 	title: "Nextbotics",
-	description: "Nextbotics"
+	description: "Nextbotics",
 };
 
 export default function RootLayout({
