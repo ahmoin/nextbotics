@@ -14,9 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "Study Physics Regents",
-	description:
-		"A website to help students prepare for the NYSED Physics Regents",
+	title: "Nextbotics",
+	description: "Nextbotics"
 };
 
 export default function RootLayout({
