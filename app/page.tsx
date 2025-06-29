@@ -183,7 +183,12 @@ export default function Home() {
 							year ? " md:flex-row md:w-xl md:mx-auto gap-1" : "mx-auto w-sm",
 						)}
 					>
-						<div className={cn("p-4 border w-full", year ? " md:w-1/2" : null)}>
+						<div
+							className={cn(
+								"p-4 border w-full",
+								year ? " md:w-1/2 max-h-96" : null,
+							)}
+						>
 							{team.name ? (
 								<>
 									<h2 className="text-2xl font-bold">
