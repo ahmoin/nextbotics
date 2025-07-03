@@ -119,7 +119,7 @@ export function EventsDisplay({ events }: { events: Event[] }) {
 
 						{event.video && (
 							<div className="mt-3 pt-3 border-t border-zinc-700">
-								<h4 className="font-semibold text-base mb-1"> Broadcast:</h4>
+								<h4 className="font-semibold text-base mb-1">Broadcast:</h4>
 								<Link
 									href={event.video}
 									target="_blank"
@@ -127,7 +127,8 @@ export function EventsDisplay({ events }: { events: Event[] }) {
 									className="flex items-center gap-1 text-sm"
 								>
 									<Button variant="link">
-										<Video className="size-4" /> Watch Live / Replay
+										<Video className="size-4" />
+										Watch Live / Replay
 									</Button>
 								</Link>
 							</div>
