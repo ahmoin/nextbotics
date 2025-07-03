@@ -114,6 +114,9 @@ export default function HomePage() {
 				>
 					{loading ? "Loading..." : "Load Team Data"}
 				</Button>
+				<h2 className="text-sm text-foreground/50">
+					* Only works for USA currently
+				</h2>
 			</div>
 
 			{error && <p className="text-red-500 text-center mb-4">{error}</p>}

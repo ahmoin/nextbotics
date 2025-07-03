@@ -1,6 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import {
+	PageActions,
+	PageHeader,
+	PageHeaderDescription,
+	PageHeaderHeading,
+} from "@/components/page-header";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/config";
 
@@ -19,28 +25,24 @@ export default function HomePage() {
 					}}
 				></div>
 			</div>
-			<div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-				<div className="text-center">
-					<h1 className="text-5xl font-semibold tracking-tight text-balance sm:text-7xl">
-						FRC Team Performance Data
-					</h1>
-					<p className="mt-8 text-lg font-medium text-pretty text-foreground/50 sm:text-xl/8">
-						Access historical and current performance statistics for FRC
-						robotics teams. {siteConfig.name} provides data to assist with team
-						analysis, scouting, and strategic planning for competitive events.
-					</p>
-					<div className="mt-10 flex items-center justify-center gap-x-6">
-						<Link href="/teams">
-							<Button>Explore Teams</Button>
-						</Link>
-						<Link href="/insights">
-							<Button variant="secondary">
-								See Insights <span aria-hidden="true">→</span>
-							</Button>
-						</Link>
-					</div>
-				</div>
-			</div>
+			<PageHeader>
+				<PageHeaderHeading>{siteConfig.name}</PageHeaderHeading>
+				<PageHeaderDescription>
+					Access historical and current performance statistics for FRC robotics
+					teams. {siteConfig.name} provides data to assist with team analysis,
+					scouting, and strategic planning for competitive events.
+				</PageHeaderDescription>
+				<PageActions>
+					<Link href="/teams">
+						<Button>Explore Teams</Button>
+					</Link>
+					<Link href="/insights">
+						<Button variant="ghost">
+							See Insights <span aria-hidden="true">→</span>
+						</Button>
+					</Link>
+				</PageActions>
+			</PageHeader>
 			<div
 				className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
 				aria-hidden="true"
