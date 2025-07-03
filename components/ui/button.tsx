@@ -4,7 +4,7 @@ import type * as React from "react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-	"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 outline-none cursor-pointer focus-visible:border-zinc-400 focus-visible:ring-zinc-400/50 focus-visible:ring-[3px] aria-invalid:ring-red-500/20 aria-invalid:border-red-500",
+	"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium border transition-all disabled:pointer-events-none disabled:opacity-50 outline-none cursor-pointer focus-visible:border-zinc-400 focus-visible:ring-zinc-400/50 focus-visible:ring-[3px] aria-invalid:ring-red-500/20 aria-invalid:border-red-500",
 	{
 		variants: {
 			variant: {
@@ -15,9 +15,10 @@ const buttonVariants = cva(
 					"bg-red-500 text-white shadow-xs hover:bg-red-500/90 focus-visible:ring-red-500/20 bg-red-500/60",
 				outline:
 					"border bg-zinc-800 shadow-xs hover:bg-zinc-700 hover:text-white border-zinc-700 hover:bg-zinc-700/50",
-				secondary: "bg-zinc-700 text-white shadow-xs hover:bg-zinc-700/80",
+				secondary:
+					"bg-zinc-700 text-white border-none shadow-xs hover:bg-zinc-700/80",
 				ghost: "hover:bg-zinc-700 hover:text-white",
-				link: "text-white underline-offset-4 hover:underline",
+				link: "text-white border-none underline-offset-4 hover:underline",
 			},
 			size: {
 				default: "h-9 px-4 py-2 has-[>svg]:px-3",

@@ -1,112 +1,56 @@
 "use client";
 
-import { useState } from "react";
-import { getTeam, getTeamYear } from "@/app/actions";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
-import { type Team, TeamDisplay } from "@/components/team-display";
-import { type TeamYear, TeamYearDisplay } from "@/components/team-year-display";
 
-export default function Home() {
-	const [teamNumber, setTeamNumber] = useState<number | undefined>();
-	const [year, setYear] = useState<number | undefined>();
-	const [team, setTeam] = useState<Team | null>(null);
-	const [teamYear, setTeamYear] = useState<TeamYear | null>(null);
-	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState<string | null>(null);
-
-	const handleFetchData = async () => {
-		if (teamNumber === undefined) {
-			setError("Please enter a team number.");
-			return;
-		}
-		setLoading(true);
-		setTeam(null);
-		setError(null);
-		try {
-			const resultTeam = await getTeam(teamNumber);
-			if (resultTeam.error) {
-				setError(resultTeam.error);
-			} else {
-				setTeam(resultTeam);
-			}
-		} catch (e) {
-			setError(`Failed to fetch Team data: ${e}`);
-		} finally {
-			setLoading(false);
-		}
-		if (year === undefined) {
-			return;
-		}
-		setTeamYear(null);
-		setError(null);
-		try {
-			const resultTeamYear = await getTeamYear(teamNumber, year);
-			if (resultTeamYear.error) {
-				setError(resultTeamYear.error);
-			} else {
-				setTeamYear(resultTeamYear);
-			}
-		} catch (e) {
-			setError(`Failed to fetch TeamYear data: ${e}`);
-		} finally {
-			setLoading(false);
-		}
-	};
-
+export default function HomePage() {
 	return (
 		<div className="font-[family-name:var(--font-geist-sans)]">
-			<div className="flex flex-col mx-auto max-w-sm pt-2 gap-1">
-				<div className="flex flex-row gap-1">
-					<Input
-						type="number"
-						placeholder="Team Number"
-						value={teamNumber}
-						onChange={(e) => setTeamNumber(parseInt(e.target.value, 10))}
-						className="h-16 w-1/2"
-					/>
-					<Input
-						type="number"
-						placeholder="Year (optional)"
-						value={year}
-						onChange={(e) => setYear(parseInt(e.target.value, 10))}
-						className="h-16 w-1/2"
-					/>
-				</div>
-				<Button className="w-full" onClick={handleFetchData} disabled={loading}>
-					{loading ? "Loading..." : "Submit"}
-				</Button>
+			<div
+				className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+				aria-hidden="true"
+			>
+				<div
+					className="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#ffffff] to-[#808080] opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75"
+					style={{
+						clipPath:
+							"polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+					}}
+				></div>
 			</div>
-			{error && <p className="text-red-500 text-center mt-4">{error}</p>}
-			<div className="flex flex-row mt-1">
-				{team && !teamYear ? (
-					<div className="p-4 border mx-auto w-sm">
-						<TeamDisplay team={team} />
+			<div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+				<div className="text-center">
+					<h1 className="text-5xl font-semibold tracking-tight text-balance sm:text-7xl">
+						FRC Team Performance Data
+					</h1>
+					<p className="mt-8 text-lg font-medium text-pretty text-foreground/50 sm:text-xl/8">
+						Access historical and current performance statistics for FRC
+						robotics teams. Our platform provides data to assist with team
+						analysis, scouting, and strategic planning for competitive events.
+					</p>
+					<div className="mt-10 flex items-center justify-center gap-x-6">
+						<Link href="/teams">
+							<Button>Explore Teams</Button>
+						</Link>
+						<Link href="/events">
+							<Button variant="secondary">
+								Or Events <span aria-hidden="true">→</span>
+							</Button>
+						</Link>
 					</div>
-				) : null}
-				{team && teamYear ? (
-					<div
-						className={cn(
-							"flex flex-col",
-							year ? " md:flex-row md:w-xl md:mx-auto gap-1" : "mx-auto w-sm",
-						)}
-					>
-						<div
-							className={cn(
-								"p-4 border w-full",
-								year ? " md:w-1/2 max-h-96" : null,
-							)}
-						>
-							<TeamDisplay team={team} />
-						</div>
-						{year ? (
-							<div className="p-4 border w-full md:w-1/2">
-								<TeamYearDisplay teamYear={teamYear} />
-							</div>
-						) : null}
-					</div>
-				) : null}
+				</div>
+			</div>
+			<div
+				className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+				aria-hidden="true"
+			>
+				<div
+					className="relative left-[calc(50%+3rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-linear-to-tr from-[#ffffff] to-[#808080] opacity-30 sm:left-[calc(50%+36rem)] sm:w-288.75"
+					style={{
+						clipPath:
+							"polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+					}}
+				></div>
 			</div>
 		</div>
 	);
