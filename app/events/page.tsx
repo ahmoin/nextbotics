@@ -88,7 +88,7 @@ export default function EventsPage() {
 			{error && <p className="text-red-500 text-center mt-4">{error}</p>}
 			<div className="flex flex-row mt-1">
 				{events ? (
-					<div className="p-4 border mx-auto w-full">
+					<div className="p-4 border-t mx-auto w-full">
 						<EventsDisplay events={events} />
 					</div>
 				) : null}
