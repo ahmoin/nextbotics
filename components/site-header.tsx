@@ -24,6 +24,9 @@ export function SiteHeader() {
 					<Link href="/events">
 						<Button variant="link">Events</Button>
 					</Link>
+					<Link href="/insights">
+						<Button variant="link">Insights</Button>
+					</Link>
 				</div>
 			</div>
 		</header>

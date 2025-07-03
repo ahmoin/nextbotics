@@ -38,7 +38,6 @@ export interface Event {
 }
 
 export function EventsDisplay({ events }: { events: Event[] }) {
-	console.log("events", events);
 	if (!events || events.length === 0) {
 		return (
 			<h2 className="text-2xl font-bold text-center mt-4">

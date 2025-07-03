@@ -141,3 +141,54 @@ export async function getTeamEvents(params?: {
 	});
 	return response.json();
 }
+
+export async function getTeams(params?: {
+	country?: string;
+	state?: string;
+	district?:
+		| "fma"
+		| "fnc"
+		| "fsc"
+		| "fit"
+		| "fin"
+		| "fim"
+		| "ne"
+		| "chs"
+		| "ont"
+		| "pnw"
+		| "pch"
+		| "isr";
+	active?: boolean;
+	metric?: string;
+	ascending?: boolean;
+	limit?: number;
+	offset?: number;
+}) {
+	const url = new URL("https://api.statbotics.io/v3/teams");
+	if (params) {
+		Object.entries(params).forEach(([key, value]) => {
+			if (value !== undefined) {
+				url.searchParams.append(key, String(value));
+			}
+		});
+	}
+
+	if (!url.searchParams.has("limit")) {
+		url.searchParams.append("limit", "1000");
+	}
+
+	const response = await fetch(url.toString(), {
+		headers: {
+			accept: "application/json",
+		},
+	});
+
+	if (!response.ok) {
+		const errorText = await response.text();
+		throw new Error(
+			`Failed to fetch teams: ${response.status} ${response.statusText} - ${errorText}`,
+		);
+	}
+
+	return response.json();
+}

@@ -33,9 +33,9 @@ export default function HomePage() {
 						<Link href="/teams">
 							<Button>Explore Teams</Button>
 						</Link>
-						<Link href="/events">
+						<Link href="/insights">
 							<Button variant="secondary">
-								Or Events <span aria-hidden="true">→</span>
+								See Insights <span aria-hidden="true">→</span>
 							</Button>
 						</Link>
 					</div>
