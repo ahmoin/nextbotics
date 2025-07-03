@@ -64,7 +64,7 @@ export function EventsDisplay({ events }: { events: Event[] }) {
 								Event Key: <span className="font-mono">{event.key}</span>
 							</p>
 							<p className="text-sm leading-tight">
-								<span className="font-semibold">Loc:</span> {event.country}
+								<span className="font-semibold">Location:</span> {event.country}
 								{event.state && `, ${event.state}`}
 								{event.district && ` (Dist: ${event.district})`}
 							</p>
@@ -77,8 +77,7 @@ export function EventsDisplay({ events }: { events: Event[] }) {
 								to {event.end_date} (Wk {event.week})
 							</p>
 							<p className="text-sm leading-tight">
-								<span className="font-semibold">Teams:</span>
-								{event.num_teams}
+								<span className="font-semibold">Teams:</span> {event.num_teams}
 							</p>
 							{event.current_match > 0 && (
 								<p className="text-sm leading-tight">
@@ -87,7 +86,7 @@ export function EventsDisplay({ events }: { events: Event[] }) {
 								</p>
 							)}
 							<p className="text-sm leading-tight">
-								<span className="font-semibold">Qual Matches:</span>
+								<span className="font-semibold">Qual Matches:</span>{" "}
 								{event.qual_matches}
 							</p>
 						</div>
@@ -97,19 +96,19 @@ export function EventsDisplay({ events }: { events: Event[] }) {
 								<h4 className="font-semibold text-base mb-1"> EPA Averages:</h4>
 								<ul className="list-disc list-inside text-xs">
 									<li>
-										Max:
+										Max:{" "}
 										<span className="font-mono">
 											{event.epa?.max?.toFixed(2) || "N/A"}
 										</span>
 									</li>
 									<li>
-										Top 8:
+										Top 8:{" "}
 										<span className="font-mono">
 											{event.epa?.top_8?.toFixed(2) || "N/A"}
 										</span>
 									</li>
 									<li>
-										Top 24:
+										Top 24:{" "}
 										<span className="font-mono">
 											{event.epa?.top_24?.toFixed(2) || "N/A"}
 										</span>
